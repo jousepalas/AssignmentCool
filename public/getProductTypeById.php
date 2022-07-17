@@ -3,6 +3,7 @@
 require "../config.php";
 
   try  {
+    error_reporting(E_ERROR | E_PARSE);
     $connection = new PDO($dsn, $username, $password, $options);
 
     $sql = "SELECT * 
@@ -53,7 +54,7 @@ if (isset($_POST['submit'])) {
     <h2>Find Product Type by Id</h2>
 
     <form method="post">
-    	<label for="productId">Product ID</label>
+    	<label for="productId">Product Type ID</label>
     	<input type="text" id="productId" name="productId">
     	<input type="submit" name="submit" value="View Results">
     </form>

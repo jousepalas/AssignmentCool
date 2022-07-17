@@ -3,6 +3,7 @@
 require "../config.php";
 
   try  {
+    error_reporting(E_ERROR | E_PARSE);
     $connection = new PDO($dsn, $username, $password, $options);
 
     $sql = "SELECT * 
