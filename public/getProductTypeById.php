@@ -8,7 +8,6 @@ require "../config.php";
     $sql = "SELECT * 
             FROM productTypes
             WHERE id = :productId";
-print_r($_POST);
     $productId = $_POST['productId'];
     $statement = $connection->prepare($sql);
     $statement->bindParam(':productId', $productId, PDO::PARAM_STR);
@@ -47,7 +46,7 @@ if (isset($_POST['submit'])) {
       </tbody>
     </table>
     <?php } else { ?>
-      <blockquote>No results found for <?php echo escape($_POST['location']); ?>.</blockquote>
+      <blockquote>No results found for <?php echo ($_POST['productId']); ?>.</blockquote>
     <?php } 
 } ?> 
 

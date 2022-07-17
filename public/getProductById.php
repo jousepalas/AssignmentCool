@@ -8,12 +8,15 @@ require "../config.php";
     $sql = "SELECT * 
             FROM products
             WHERE id = :productId";
+    
     $productId = $_POST['productId'];
     $statement = $connection->prepare($sql);
+    
     $statement->bindParam(':productId', $productId, PDO::PARAM_STR);
     $statement->execute();
-
+    
     $result = $statement->fetchAll();
+
   } catch(PDOException $error) {
       echo $sql . "<br>" . $error->getMessage();
   }
@@ -49,7 +52,7 @@ if (isset($_POST['submit'])) {
       </tbody>
     </table>
     <?php } else { ?>
-      <blockquote>No results found for <?php echo ($_POST['location']); ?>.</blockquote>
+      <blockquote>No results found for <?php echo ($_POST['productId']); ?>.</blockquote>
     <?php } 
 } ?> 
 

@@ -74,7 +74,7 @@ if (isset($_POST['submit'])) {
       </tbody>
     </table>
     <?php } else { ?>
-      <blockquote>No results found for <?php echo escape($_POST['location']); ?>.</blockquote>
+      <blockquote>No results found for <?php echo ($_POST['productId']); ?>.</blockquote>
     <?php } 
 } ?> 
 
