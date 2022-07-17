@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) {
         <tr>
           <td><?php echo ($row["id"]); ?></td>
           <td><?php echo ($row["name"]); ?></td>
-          <td><?php echo ($row["canBeInsured"]); ?></td>
+          <td><?php echo ($row["canBeInsured"] ? "Yes" : "No"); ?></td>
         </tr>
       <?php endforeach; ?>
       </tbody>

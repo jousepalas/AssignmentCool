@@ -8,7 +8,6 @@ require "../config.php";
     $sql = "SELECT * 
             FROM products
             WHERE id = :productId";
-print_r($_POST);
     $productId = $_POST['productId'];
     $statement = $connection->prepare($sql);
     $statement->bindParam(':productId', $productId, PDO::PARAM_STR);
@@ -40,16 +39,17 @@ if (isset($_POST['submit'])) {
       <tbody>
       <?php foreach ($result as $row) : ?>
         <tr>
-          <td><?php echo ($row["id"]); ?></td>
-          <td><?php echo ($row["name"]); ?></td>
-          <td><?php echo ($row["salesPrice"]); ?></td>
-          <td><?php echo ($row["productTypeId"]); ?></td>
+        <td></td>
+        <td><?php echo ($row["id"]); ?></td>
+        <td><?php echo ($row["name"]); ?></td>
+        <td><?php echo ($row["salesPrice"]); ?></td>
+        <td><?php echo ($row["productTypeId"]); ?></td>
         </tr>
       <?php endforeach; ?>
       </tbody>
     </table>
     <?php } else { ?>
-      <blockquote>No results found for <?php echo escape($_POST['location']); ?>.</blockquote>
+      <blockquote>No results found for <?php echo ($_POST['location']); ?>.</blockquote>
     <?php } 
 } ?> 
 

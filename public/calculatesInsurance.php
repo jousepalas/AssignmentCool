@@ -29,7 +29,6 @@ require "../config.php";
 
 <?php  
 if (isset($_POST['submit'])) {
-  print_r($_POST);
   if ($result) { ?>
     <h2>Results</h2>
 
@@ -47,13 +46,20 @@ if (isset($_POST['submit'])) {
       <tbody>
       <?php foreach ($result as $row) : ?>
         <?php 
+        $insuranceCost = [0, 1000, 2000];
         $calculation = "";
-        if(in_array($row["productTypeId"], [21, 32, 841]))
+        $func = function($value) {
+          return $value + 500;
+      };
+
+        if(in_array($row["productTypeId"], [21, 32, 841])) {
+          $insuranceCost = array_map($func, $insuranceCost);
+        }
         $isLess = 500 > $row["salesPrice"] ? true : false;
         if ($isLess) {
-          $calculation = "no insurance required";
+          $calculation = $insuranceCost[0] === 0 ? "no insurance required" : "insurance cost is ".$insuranceCost[0];
         } else {
-          $calculation = $row["salesPrice"] < 2000 ? "insurance cost is 1000" : "insurance cost is 2000" ;
+          $calculation = $row["salesPrice"] < 2000 ? "insurance cost is ".$insuranceCost[1] : "insurance cost is ".$insuranceCost[2] ;
         }
         ?>
         <tr>
